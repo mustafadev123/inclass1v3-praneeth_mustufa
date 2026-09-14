@@ -1,0 +1,40 @@
+Members:Mustufa Praneeth
+
+
+1. Widget Tree
+
+The tree starts with MyApp, which builds MaterialApp. Inside it, DefaultTabController wraps _TabsNonScrollableDemo, which builds a Scaffold. The Scaffold contains an AppBar with the tab labels, a TabBarView with four pages, and a BottomAppBar. Inside the pages, Containers hold layouts such as Columns and a ListView, which contain the text, buttons, image, TextField, and Cards.
+
+I'd start with _TabsNonScrollableDemo, whose state creates _tabController, and change its length to 5. That controller owns the active tab count because both TabBar and TabBarView use it. I'd also update the outer DefaultTabController length, tab labels, and pages to match.
+
+2. Stateless vs. Stateful
+
+MyApp is stateless because it just sets up the app. Making it stateful would add extra code without a useful reason. _TabsNonScrollableDemo is stateful because it manages the controller and selected tab. Making it stateless would remove the lifecycle methods and setState() its current code needs.
+
+3. Controllers & Lifecycle
+
+Opening the screen creates the controller, animation resources, and a listener. If the screen is removed without disposing the controller, those resources aren't explicitly cleaned up. Repeatedly reopening the screen over hours could leave resources or callbacks alive, wasting memory or causing errors. A reviewer would flag the missing cleanup. Just switching tabs doesn't create a new controller each time.
+
+4. Declarative UI
+
+In Flutter, I update the state and call setState(), then build() describes the updated screen. With imperative JavaScript, I'd manually find and change an HTML element. I'd prefer Flutter's approach in a large team because the display rules stay together, making changes easier to understand and review.
+
+5. GitHub Teamwork
+
+So biggest challenge was what to do like if i am working on the text file so what my partner will do.Later we sorted that out.
+
+6. Restoration Layer
+
+If I'm on Tab 3 and the OS kills the app in the background, restoration can save the selected index and put me back on Tab 3 when the app is restored. Without it, I'd return to Tab 1. My pasted code also needs a restorationScopeId on MaterialApp to enable this feature; setState() alone doesn't save state across process death.
+
+7. Listener -> setState
+
+Yes, the visible tab would still change because TabBar and TabBarView listen directly to _tabController. Updating tabIndex.value keeps the saved index current. Without setState(), the parent wouldn't rebuild other widgets displaying that value. Declarative UI can also update through controller listeners.
+
+8. One List, Two Loops
+
+I kept the loop for the TabBar labels but wrote the four TabBarView children by hand. Building both from one shared list of labels and page widgets is safer because each label stays paired with its content, reducing order and count mistakes.
+
+9. Requirements -> Code
+
+I added the required TextField in Tab 2, inside the Column under Padding and SingleChildScrollView. It belongs in "Layer 7: Declarative build -- where your 01b work lives" because it describes visible content. initState() handles one-time setup and doesn't return the screen's widget tree.
