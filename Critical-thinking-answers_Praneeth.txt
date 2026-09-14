@@ -1,1 +1,37 @@
+Critical Thinking Questions
 
+1. Widget Tree
+
+My app starts with a Scaffold. It has an AppBar, TabBar, TabBarView, and BottomAppBar. The TabBarView contains the four tabs. If I added a fifth tab, I would first change the tabs list because it controls the number of tabs.
+
+2. Stateless vs. Stateful
+
+MyApp is stateless because it does not need to remember changing information. The tabs page is stateful because it needs to remember the selected tab. If I made the tabs page stateless, it would be harder to keep track of the selected tab.
+
+3. Controllers & Lifecycle
+
+initState() creates the TabController, and dispose() removes it when it is no longer needed. If I forgot to call dispose(), the controller could stay in memory and cause a memory leak. This could make a real app slower over time.
+
+4. Declarative UI
+
+Flutter uses setState() to tell the app that something changed, and then build() creates the updated UI. This is easier for me to understand than manually changing each part of the screen.
+
+5. Team Collaboration
+
+The hardest part for me was understanding GitHub branches and pushing code. I would communicate with my partner more before making changes. I would also make small commits so it is easier to fix problems.
+
+6. Restoration Layer
+
+The restoration code can remember which tab I was using. For example, if the phone closes the app in the background, the app can restore the selected tab. Without restoration, the user may go back to the first tab.
+
+7. Listener → setState
+
+The tab can still change when I tap it because the TabController controls the tabs. But without setState(), the rest of the UI would not rebuild when the state changes.
+
+8. One List, Two Loops
+
+I kept the for (final tab in tabs) loop. I think this is better because the tab names and tab content stay connected. It also lowers the chance of the tabs and pages being in the wrong order.
+
+9. Requirements → Code
+
+I added the AlertDialog. It belongs in the build() method because it is part of the UI and happens when the user presses a button. initState() is mainly used for setting things up when the widget starts.
