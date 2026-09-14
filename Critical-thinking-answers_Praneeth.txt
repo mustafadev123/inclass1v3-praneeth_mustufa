@@ -1,3 +1,13 @@
+## Team Roster — In-Class 1 v3
+
+| Member | GitHub Username | Contribution |
+|---|---|---|
+| Praneeth Shankar Ravuri | @rpraneeths | Built Tabs 3 and 4 , Answered critical thinking questions |
+| Mustafa Muhammad | @mustafadev123 | Built tabs 1 and 2,Answered critical thinking questions |
+
+
+
+
 Critical Thinking Questions
 
 1. Widget Tree
