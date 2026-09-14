@@ -1,4 +1,9 @@
-Members:Mustufa Praneeth
+## Team Roster — In-Class 1 v3
+
+| Member | GitHub Username | Contribution |
+|---|---|---|
+| Muhammad mustufa | @mustafadev123 | Built tabs 1 and 2 |
+| Praneeth | @rpraneeths | Built tabs 3 and 4 |
 
 
 1. Widget Tree
